@@ -68,7 +68,9 @@ function drawPaddles(){
     ctx.strokeRect(paddle2.x, paddle2.y, paddle2.width, paddle2.height);
 
 };
-function createBall(){};;
+function createBall(){
+    ballSpeed = 1;
+};;
 function moveBall(){};
 function drawBall(ballX, ballY){
     ctx.fillStyle - ballColor;
