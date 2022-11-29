@@ -93,7 +93,7 @@ function drawBall(ballX, ballY){
     ctx.fillStyle - ballColor;
     ctx.strokeStyle = ballBorderColor;
     ctx.lineWidth = 2;
-    ctx.biginPath();
+    ctx.beginPath();
     ctx.arc(ballX, ballY, ballRadius, 0, 2 * Math.PI);
     ctx.stroke();
     ctx.fill();
@@ -126,7 +126,7 @@ function checkCollision(){
     }
     if(ballX >= (paddle2.x - ballRadius)){
         if(ballY > paddle2.y && ballY < paddle2.y + paddle2.height){
-            ballX = (paddle2.x - ballRadius;
+            ballX = (paddle2.x - ballRadius);
             ballXDirection *= -1;
             ballSpeed += 1;
         }
@@ -164,7 +164,7 @@ function changeDirection(event){
 
 };
 function updateScore(){
-    scoreText.textContent = ${player1Score} : ${player2Score};
+    scoreText.textContent = '${player1Score} : ${player2Score}';
 };
 function resetGame(){
     player1Score = 0;
