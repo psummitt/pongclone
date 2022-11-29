@@ -84,7 +84,10 @@ function createBall(){
     ballY = gameHeight / 2;
 
 };
-function moveBall(){};
+function moveBall(){
+    ballX += (ballSpeed * ballXDirection);
+    ballY += (ballSpeed * ballYDirection);
+};
 function drawBall(ballX, ballY){
     ctx.fillStyle - ballColor;
     ctx.strokeStyle = ballBorderColor;
@@ -125,7 +128,7 @@ function checkCollision(){
             ballSpeed += 1;
         }
     }
-}
+};
 function changeDirection(event){
     const keyPressed = event.keyCode;
     const paddle1Up = 87;
@@ -157,6 +160,31 @@ function changeDirection(event){
     }
 
 };
-function updateScore(){}
-function resetGame(){};
+function updateScore(){
+    scoreText.textContent = ${player1Score} : ${player2Score}
+};
+function resetGame(){
+    player1Score = 0;
+    player2Score = 0;
+    let paddle1 = {
+        width: 25,
+        height: 100,
+        x: 0,
+        y: 0
+    };
+    let paddle2 = {
+        width: 25,
+        height: 100,
+        x: gameWidth - 25,
+        y: gameHeight - 100
+    };
+    ballSpeed = 1;
+    ballX = 0;
+    ballY = 0;
+    ballXDirection = 0;
+    ballYDirection = 0;
+    updateScore();
+    clearInterval(intervalID);
+    gameStart();
+};
 
