@@ -70,7 +70,20 @@ function drawPaddles(){
 };
 function createBall(){
     ballSpeed = 1;
-};;
+    if(Math.round(Math.random()) == 1){
+        ballXDirection = 1;
+    } else {
+        ballXDirection = -1;
+    }
+    if(Math.round(Math.random()) == 1) { 
+        ballYDirection = 1;
+    } else {
+        ballYDirection = -1;
+    }
+    ballX = gameWidth / 2;
+    ballY = gameHeight / 2;
+
+};
 function moveBall(){};
 function drawBall(ballX, ballY){
     ctx.fillStyle - ballColor;
@@ -81,7 +94,38 @@ function drawBall(ballX, ballY){
     ctx.stroke();
     ctx.fill();
 };
-function checkCollision(){};
+function checkCollision(){
+    if(ballY <= 0 -ballRadius){
+        ballYDirection *= -1;
+    }
+    if(ballY >= gameHeight - ballRadius) {
+        ballYDirection *= -1;
+    }
+    if(ballX <= 0){
+        player2Score+=1;
+        updateScore();
+        createBall();
+        return;
+    }
+    if(ballX >= gameWidth){
+        player1Score+=1;
+        updateScore();
+        createBall();
+        return;
+    }
+    if(ballX <= (paddle1.x + paddle1.width + ballRadius)){
+        if(ballY > paddle1.y && ballY < paddle1.y + paddle.height){
+            ballXDirection *= -1;
+            ballSpeed +=1;
+        }
+    }
+    if(ballX >= (paddle2.x - ballRadius)){
+        if(ballY > paddle2.y && ballY < paddle2.y + paddle.height){
+            ballXDirection *= -1;
+            ballSpeed += 1;
+        }
+    }
+}
 function changeDirection(event){
     const keyPressed = event.keyCode;
     const paddle1Up = 87;
